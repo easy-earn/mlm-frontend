@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mlm-portal-frontend",
+            "outputPath": "app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "src/styles.scss",
+              "src/themes.scss",
+              "src/assets/css/angular-material-override.scss",
+              "src/assets/css/all.min.css",
+              "src/assets/css/main.css",
+              "src/assets/css/line-awesome.min.css",
+              "src/assets/css/vendor/dots.css",
+              "src/assets/css/vendor/slick.css"
             ],
             "scripts": []
           },
@@ -37,8 +48,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "20mb"
                 },
                 {
                   "type": "anyComponentStyle",

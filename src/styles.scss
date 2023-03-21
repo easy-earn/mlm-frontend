@@ -1,1 +1,135 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$heading-color: #ffffff;
+$para-color: #ffffff;
+$primary-color: #cca354; // $base-color: #f2d586
+$primary-color-on: #062c4e; // bg-color
+$bg-one: #001d4a;
+$bg-two: #343A40; // border-color
+$border-color: rgba($primary-color, 0.45);
+$bg-red: red;
+$bg-red-on: white;
+
+:root {
+  --mlm-primary: #{$primary-color};
+  --mlm-primary-on: #{$primary-color-on};
+  --mlm-secondary: #{$bg-one};
+  --mlm-secondary-on: #{$bg-two};
+  --mlm-warn: #{$bg-red};
+  --mlm-warn-on: #{$bg-red-on};
+  --mlm-border-color: #{$border-color};
+  --mlm-heading-color: #{$heading-color};
+  --mlm-para-color: #{$para-color};
+  --mlm-gray: #334155;
+}
+
+.mb-0 {
+  label.mat-checkbox-layout {
+    margin-bottom: 0px;
+  }
+}
+
+.text-primary {
+  color: var(--mlm-primary) !important;
+}
+
+.border-primary {
+  border-color: var(--mlm-primary);
+}
+
+.font-inherit {
+  font-family: inherit;
+}
+
+.font-global {
+  font-family: 'Exo, sans-serif';
+}
+
+// White Theme Override CSS
+
+.white-card {
+  background-color: white !important;
+  color: black !important;
+}
+
+.white-table {
+  background-color: white !important;
+  color: black !important;
+}
+
+.white-table .mat-header-cell,
+.white-table .mat-cell {
+  border-color: rgba(0, 0, 0, 0.172) !important;
+  color: black !important;
+  padding: 0px 8px;
+}
+
+.white-table .mat-header-row {
+  background-color: #eee !important;
+}
+
+.compact-header {
+  $header-height: 30px;
+  height: $header-height !important;
+
+  .mat-header-cell {
+    height: $header-height !important;
+  }
+}
+
+.compact-cell-row {
+  height: 30px !important;
+
+  .mat-cell {
+    height: 30px !important;
+  }
+}
+
+.white-paginator {
+  background-color: white;
+  color: black !important;
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: var(--mlm-primary) !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: var(--mlm-primary) !important;
+  }
+}
+
+.white-paginator .mat-paginator-range-label,
+.white-paginator .mat-paginator-page-size-label,
+.white-paginator .mat-paginator-page-size,
+.white-paginator .mat-paginator-navigation-previous,
+.white-paginator .mat-paginator-navigation-next,
+.white-paginator .mat-select-arrow,
+.white-paginator .mat-paginator-icon {
+  color: #6b6b6b !important;
+}
+
+.white-paginator .mat-paginator-range-label,
+.white-paginator .mat-paginator-page-size-label {
+  font-weight: bold !important;
+}
+
+.white-paginator .mat-paginator-range-label {
+  font-size: 14px !important;
+}
+
+.white-paginator .mat-paginator-page-size {
+  margin-right: 16px !important;
+}
+
+.white-paginator .mat-select-value {
+  font-size: 14px !important;
+  color: var(--mlm-primary) !important;
+}
+
+.no-error-spacing {
+  .mat-form-field-wrapper {
+    margin-bottom: 0px !important;
+  }
+}
