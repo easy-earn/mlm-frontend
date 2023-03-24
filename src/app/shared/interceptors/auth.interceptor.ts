@@ -21,6 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let newReq = req.clone();
 
     if (this._authService.accessToken) {
+      console.log('this._authService.accessToken', this._authService.accessToken);
       newReq = req.clone({
         headers: req.headers.set(
           'Authorization',

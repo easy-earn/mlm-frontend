@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +13,11 @@ export class HomeComponent implements OnInit {
 
   form: any = {
     bank_account: null,
-    balance: 10000
+    balance: 0,
+    referral_code: null,
   }
 
+  _unsubscribeAll: Subject<any> = new Subject();
   bank_searchQuery: string = '';
 
   accounts: any = [
@@ -27,9 +32,32 @@ export class HomeComponent implements OnInit {
     { name: 'David Lee', number: '4812162022' },
     { name: 'David Lee', number: '4812162022' }
   ]
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private loader: LoaderService
+  ) {
+    this.loader.open();
+    this.authService.getUserDetail().pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+      if (response) {
+        const { result } = response;
+        this.authService.user = result;
+        this.form.balance = this.authService.user.account_balance;
+        this.form.referral_code = this.authService.user.referral_code;
+      }
+      this.loader.close();
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(null);
+    this._unsubscribeAll.complete();
+  }
+
+  getUserDetail() {
+
   }
 
   withdraw() {

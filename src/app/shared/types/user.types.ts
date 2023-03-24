@@ -3,7 +3,12 @@ export interface User {
   userDoc: UserObject
 }
 
-export interface UserObject {
+export interface Doc {
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface UserObject extends Doc {
   user_id: string;
   name: string;
   email: string;
@@ -18,10 +23,25 @@ export interface UserObject {
   zipcode?: number;
   is_terms_accepted: boolean;
   is_verified: boolean;
-  created_at: string;
-  updated_at: string;
+  transaction_id?: string;
+  transaction?: Transaction;
+  plan?: Plan;
+  account_balance?: number;
 }
 
+export interface Plan extends Doc {
+  plan_id?: string;
+  plan_name: string;
+  amount: number;
+}
+export interface Transaction extends Doc {
+  user_id: string;
+  upi: string;
+  utr: string;
+  plan_id: string;
+  transaction_type: number
+  is_verified: boolean
+}
 
 export interface SignupForm {
   name: string;

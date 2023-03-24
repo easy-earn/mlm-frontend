@@ -1,18 +1,5 @@
 'use strict';
 
-var plans = [
-  { planId: 1, planName: "Package 1", amount: 200 },
-  { planId: 2, planName: "Package 2", amount: 400 },
-  { planId: 3, planName: "Package 3", amount: 800 },
-  { planId: 4, planName: "Package 4", amount: 1600 },
-  { planId: 5, planName: "Package 5", amount: 3200 },
-  { planId: 6, planName: "Package 6", amount: 6400 },
-  { planId: 7, planName: "Package 7", amount: 12800 },
-  { planId: 8, planName: "Package 8", amount: 25600 },
-  { planId: 9, planName: "Package 9", amount: 51200 },
-  { planId: 10, planName: "Package 10", amount: 102400 },
-]
-
 // menu options custom affix
 var fixed_top = $(".header");
 $(window).on("scroll", function () {
@@ -57,11 +44,10 @@ $(window).on("scroll", function () {
   const currentSection = sections.length - [...sections].reverse().findIndex(section => window.scrollY >= section.offsetTop - 60) - 1;
   navLinks.forEach(link => link.classList.remove('active-link'));
 
-
   if (currentSection == 0) $('#home-link').addClass('active-link');
-  if (currentSection == 1) $('#about-link').addClass('active-link');
-  if (currentSection == 2) $('#plan-link').addClass('active-link');
-  if (currentSection == 5) $('#contact-link').addClass('active-link');
+  // if (currentSection == 1) $('#about-link').addClass('active-link');
+  // if (currentSection == 2) $('#plan-link').addClass('active-link');
+  if (currentSection == 3) $('#contact-link').addClass('active-link');
 });
 
 // Animate the scroll to top
@@ -83,38 +69,7 @@ $(function () {
 })
 
 
-function insertProductPlans(plans) {
-  // Loop through each plan in the array
-  for (var i = 0; i < plans.length; i++) {
-    // Create a new div element for the product plan
-    var plan = plans[i];
-    // Add the plan's data to the div element
-
-    var div1 = $("<div></div>").addClass("col-xl-3 col-lg-4 col-md-6 mb-30");
-    var div2 = $("<div></div>").addClass("package-card text-center bg_img")
-      // .attr("data-background", "assets/images/bg/bg-4.png");
-      .css('background-image', function () {
-        var bg = ('url(assets/images/bg/bg-4.png)');
-        return bg;
-      });
-    var h4 = $("<h4></h4>").addClass("package-card__title base--color mb-2").text(`${plan.planName}`);
-    var ul = $("<ul></ul>").addClass("package-card__features mt-4");
-    var li1 = $("<li></li>").text("Return 0.2%");
-    var li2 = $("<li></li>").text("Every Day");
-    var li3 = $("<li></li>").text("For Lifetime");
-    var li4 = $("<li></li>").text("Lifetime Earning");
-    var div3 = $("<div></div>").addClass("package-card__range mt-5 base--color").text(`₹ ${plan.amount}`);
-    var a = $("<a></a>").addClass("cmn-btn btn-md mt-4").attr("href", `./app/auth/login?planId=${plan.planId}`).text("Invest Now");
-
-    // Append the elements to the DOM
-    ul.append(li1, li2, li3, li4);
-    div2.append(h4, ul, div3, a);
-    div1.append(div2);
-    $("#plan-container").append(div1);
-  }
-}
-
-insertProductPlans(plans);
+// insertProductPlans(plans);
 
 
 /* ==============================

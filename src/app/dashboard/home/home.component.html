@@ -1,5 +1,5 @@
 <div class="lg:p-5 sm:p-3">
-  <div class="grid grid-cols-2 gap-3">
+  <div class="grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-3">
     <div class="col-span-1">
       <mat-card class="white-card  overflow-hidden custom-card text-center">
         <mat-card-title>Your Account Balance</mat-card-title>
@@ -7,7 +7,7 @@
           <h1 class="text-4xl font-bold text-primary" *ngIf="form.balance != null && form.balance != undefined">₹
             {{form.balance}}</h1>
           <div class="flex items-center mt-5">
-            <mat-select class="w-full p-2 mr-5 border rounded-md bg-white flex h-[40px] no-error-spacing"
+            <mat-select class="w-full p-2 mr-5 border rounded-md bg-white flex h-[40px] no-error-spacing white-select"
               [(ngModel)]="form.bank_account" placeholder="Select">
               <input [(ngModel)]="bank_searchQuery" class="p-3 border-b w-full mb-2 sticky text-black top-0 z-50"
                 placeholder="Search...">
@@ -22,13 +22,15 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- <div class="col-span-1">
-      <mat-card>
-        <mat-card-title>Second Card Title</mat-card-title>
-        <mat-card-content>Content goes here</mat-card-content>
+    <div class="col-span-1">
+      <mat-card class="white-card  overflow-hidden custom-card text-center" *ngIf="form.referral_code">
+        <mat-card-title>Your Referral Code</mat-card-title>
+        <mat-card-content class="text-center">
+          <h1 class="text-4xl font-normal text-primary">{{form?.referral_code}}</h1>
+        </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-span-1">
+    <!-- <div class="col-span-1">
       <mat-card>
         <mat-card-title>Third Card Title</mat-card-title>
         <mat-card-content>Content goes here</mat-card-content>

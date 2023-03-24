@@ -56,10 +56,10 @@
                 <div class="form-group">
                   <label>Pacakge</label>
                   <mat-form-field appearance="outline" floatLabel="never"
-                    class="w-full border-primary font-global border-1 compact-dropdown no-error-spacing">
+                    class="w-full border-primary font-global border-1 compact-input no-error-spacing">
                     <mat-select placeholder="Select Plan" name="package" [(ngModel)]="form.package">
                       <mat-option *ngFor="let plan of planList" [value]="plan">
-                        {{plan.planName}} - ₹{{plan.amount}}
+                        {{plan.plan_name}} - ₹{{plan.amount}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>

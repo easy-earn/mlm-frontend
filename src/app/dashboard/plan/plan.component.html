@@ -1,0 +1,37 @@
+<div class="lg:p-5 sm:p-3">
+  <div class="flex items-center justify-center">
+    <mat-card class="white-card overflow-hidden custom-card text-center p-[20px] flex-shrink-0"
+      *ngIf="!is_plan_purchased">
+      <mat-card-content class="text-center">
+        <h1 class="text-4xl font-bold text-primary">
+          Welcome to Easy Earn!
+        </h1>
+        <p class="text-slate-500">Purchase Plan</p>
+        <div class="flex items-center mt-5">
+          <mat-select class="w-full p-2 mr-5 border rounded-md no-error-spacing white-select" [(ngModel)]="form.plan"
+            placeholder="Select Plan" [compareWith]="compareFn">
+            <mat-option *ngFor="let plan of plans" [value]="plan">
+              {{ plan.plan_name }} - (₹ {{plan.amount}})
+            </mat-option>
+          </mat-select>
+
+          <button mat-raised-button color="primary" class="text-white flex-shrink-0"
+            (click)="purchase(form.plan.plan_id)">Purchase</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="white-card overflow-hidden custom-card text-center p-[20px] flex-shrink-0"
+      *ngIf="is_plan_purchased">
+      <mat-card-content class="text-center p-[30px]">
+        <p class=" font-semibold text-primary">
+          We're writing to confirm that the plan has been successfully purchased.
+        </p>
+        <!-- You can check your transaction details. -->
+        <!-- <div>
+
+        </div> -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

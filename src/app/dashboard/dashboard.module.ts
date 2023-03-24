@@ -6,13 +6,17 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PlanComponent } from './plan/plan.component';
+import { PlanPurchaseModalComponent } from './plan-purchase-modal/plan-purchase-modal.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    PlanComponent,
+    PlanPurchaseModalComponent
   ],
   imports: [
     CommonModule,

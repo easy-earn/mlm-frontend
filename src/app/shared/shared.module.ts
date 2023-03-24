@@ -20,7 +20,11 @@ import { FuseMediaWatcherService } from './module/media-watcher/media-watcher.se
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SearchPipe } from './pipes/search.pipe';
+import { PurchaseService } from './services/purchase.service';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderService } from './services/loader.service';
 
 
 const modules = [
@@ -41,11 +45,12 @@ const modules = [
   MatCardModule,
   MatDialogModule,
   MatPaginatorModule,
-  MatTableModule
+  MatTableModule,
+  MatProgressSpinnerModule
 ]
 
 const components = [
-
+  LoaderComponent
 ]
 
 const pipes = [
@@ -54,7 +59,8 @@ const pipes = [
 
 @NgModule({
   declarations: [
-    ...pipes
+    ...pipes,
+    ...components
   ],
   imports: [
     ...modules
@@ -63,6 +69,6 @@ const pipes = [
     ...modules,
     ...pipes
   ],
-  providers: [SnackbarService, UtilityService, FuseMediaWatcherService]
+  providers: [SnackbarService, UtilityService, FuseMediaWatcherService, PurchaseService, LoaderService]
 })
 export class SharedModule { }

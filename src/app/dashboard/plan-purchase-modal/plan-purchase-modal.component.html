@@ -1,0 +1,69 @@
+<h2 mat-dialog-title class="flex items-center justify-between  border-b p-[15px] mb-0">
+  <div class="flex flex-col">
+    <span>{{planName}} - ₹ {{planAmount}}</span>
+    <span class="text-xs text-slate-400">(Excluding GST)</span>
+  </div>
+  <div>
+    <button mat-button class="border border-md rounded-md mr-3" (click)="closeDialog()">
+      close
+    </button>
+    <button mat-flat-button type="button" color="primary" tabindex="4" class="text-white"
+      (click)="purchasePlan()">Purchase</button>
+  </div>
+</h2>
+<div mat-dialog-content class="p-[15px] m-0 modal-content">
+  <div class="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 gap-4">
+    <div class="flex items-center justify-center flex-col">
+      <!-- QR code image goes here -->
+      <p class="text-sm">(Scan To Pay)</p>
+      <img [src]="planQR" class="max-w-[180px] m-[10px]" />
+    </div>
+    <div class="flex items-center justify-center flex-col">
+      <mat-form-field tabindex="0" appearance="outline"
+        class="w-full no-error-spacing compact-input white-theme text-sm" [class.mat-error]="errors['/upi']">
+        <span>UPI ID *</span>
+        <input matInput [(ngModel)]="form.upi" class="text-slate-900" placeholder="Enter UPI Id" />
+      </mat-form-field>
+
+      <mat-form-field tabindex="1" appearance="outline" [class.mat-error]="errors['/utr']"
+        class="mt-[10px] w-full no-error-spacing compact-input white-theme text-sm">
+        <span>UTR Number (Transaction ID) *</span>
+        <input matInput [(ngModel)]="form.utr" class="text-slate-900"
+          placeholder="Enter Transaction Id or Reference number" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center justify-center flex-col">
+      <mat-form-field tabindex="2" appearance="outline" [class.mat-error]="errors['/bank_account_number']"
+        class="w-full no-error-spacing compact-input white-theme text-sm">
+        <span>Bank Account Number *</span>
+        <input matInput type="number" [(ngModel)]="form.bank_account_number" class="text-slate-900"
+          placeholder="Enter bank account number" />
+      </mat-form-field>
+
+      <mat-form-field tabindex="3" appearance="outline" [class.mat-error]="errors['/ifsc_code']"
+        class="mt-[10px] w-full no-error-spacing compact-input white-theme text-sm">
+        <span>IFSC Code *</span>
+        <input matInput [(ngModel)]="form.ifsc_code" class="text-slate-900" placeholder="Enter IFSC code" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center justify-center flex-col">
+      <mat-form-field appearance="outline" class="w-full no-error-spacing compact-input white-theme text-sm">
+        <span>Package</span>
+        <input matInput class="text-slate-900" disabled placeholder="Enter Package Name" [value]="planName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mt-[10px] w-full no-error-spacing compact-input white-theme text-sm">
+        <span>Amount (Including <b>18%</b> GST)</span>
+        <input matInput class="text-slate-900" disabled placeholder="Amount" value="{{'₹ ' + (planAmount*1.18)}}" />
+      </mat-form-field>
+    </div>
+  </div>
+  <span class="font-extrabold mt-[20px]">Note: </span>
+  <p class="text-xs">
+    We are currently in the process of developing our payment gateway, which means that your transaction will require
+    manual verification. Rest assured, we will attend to your request promptly and provide you with a response within 24
+    hours. Thank you for your understanding and patience as we work to improve our services.
+  </p>
+</div>

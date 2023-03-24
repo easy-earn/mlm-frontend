@@ -13,10 +13,18 @@ export class AuthService {
 
   // private _authenticated: boolean = false;
 
-  user: UserObject | null = null;
+  // user: UserObject | null = null;
 
 
   constructor(public _httpClient: HttpClient) {
+  }
+
+  set user(user: UserObject) {
+    user && localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  get user() {
+    return JSON.parse(localStorage.getItem('user') ?? '{}');
   }
 
   set accessToken(token: string | undefined) {
@@ -55,6 +63,10 @@ export class AuthService {
 
   resetPassword(form: UpdatePasswordForm) {
     return this._httpClient.post<ApiResponse<any>>(`${api}/auth/update-password`, form)
+  }
+
+  getUserDetail() {
+    return this._httpClient.get<ApiResponse<any>>(`${api}/user/get-my-profile`)
   }
 
   signIn(credentials: { email: string; password: string }): Observable<any> {
