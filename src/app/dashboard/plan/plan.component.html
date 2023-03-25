@@ -1,6 +1,7 @@
 <div class="lg:p-5 sm:p-3">
   <div class="flex items-center justify-center">
-    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0" *ngIf="!is_plan_purchased">
+    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0"
+      *ngIf="user_pro_status == 'NOT_PRO'">
       <mat-card-content class="text-center">
         <h1 class="text-4xl font-bold text-primary">
           Welcome to Easy Earn!
@@ -20,7 +21,23 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0" *ngIf="is_plan_purchased">
+    <mat-card class="white-card max-w-full overflow-hidden text-center p-[20px] flex-shrink-0"
+      *ngIf="user_pro_status == 'PENDING'">
+      <mat-card-content class="text-center p-[30px]">
+        <mat-icon color="primary" class="mb-[20px] w-[100px] text-[30px] h-[30px]">thumb_up</mat-icon>
+        <p class="font-normal">
+          We have received your purchase request and will review it within 24 hours to approve your payment. Once
+          approved, you
+          can refer others to our services.
+        </p>
+        <!-- You can check your transaction details. -->
+        <!-- <div>
+
+        </div> -->
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0" *ngIf="user_pro_status == 'PRO'">
       <mat-card-content class="text-center p-[30px]">
         <p class=" font-semibold text-primary">
           We're writing to confirm that the plan has been successfully purchased.

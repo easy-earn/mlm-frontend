@@ -11,6 +11,7 @@ export interface PlanDialogData {
 export interface PurchaseForm {
   upi: string;
   utr: string;
+  account_holder_name?: string | null;
   bank_account_number?: number | null;
   ifsc_code?: string | null;
   plan_id: number | null;

@@ -4,7 +4,7 @@
     <span class="text-xs text-slate-400">(Excluding GST)</span>
   </div>
   <div>
-    <button mat-button class="border border-md rounded-md mr-3" (click)="closeDialog()">
+    <button mat-button class="border border-md rounded-md mr-3" (click)="closeDialog(false)">
       close
     </button>
     <button mat-flat-button type="button" color="primary" tabindex="4" class="text-white"
@@ -18,7 +18,7 @@
       <p class="text-sm">(Scan To Pay)</p>
       <img [src]="planQR" class="max-w-[180px] m-[10px]" />
     </div>
-    <div class="flex items-center justify-center flex-col">
+    <div class="flex items-center mt-[30px] flex-col">
       <mat-form-field tabindex="0" appearance="outline"
         class="w-full no-error-spacing compact-input white-theme text-sm" [class.mat-error]="errors['/upi']">
         <span>UPI ID *</span>
@@ -33,9 +33,16 @@
       </mat-form-field>
     </div>
 
-    <div class="flex items-center justify-center flex-col">
-      <mat-form-field tabindex="2" appearance="outline" [class.mat-error]="errors['/bank_account_number']"
+    <div class="flex items-center mt-[30px] flex-col">
+      <mat-form-field tabindex="2" appearance="outline" [class.mat-error]="errors['/account_holder_name']"
         class="w-full no-error-spacing compact-input white-theme text-sm">
+        <span>Bank Account Holder Number *</span>
+        <input matInput type="text" [(ngModel)]="form.account_holder_name" class="text-slate-900"
+          placeholder="Enter bank account holder number" />
+      </mat-form-field>
+
+      <mat-form-field tabindex="2" appearance="outline" [class.mat-error]="errors['/bank_account_number']"
+        class="mt-[10px] w-full no-error-spacing compact-input white-theme text-sm">
         <span>Bank Account Number *</span>
         <input matInput type="number" [(ngModel)]="form.bank_account_number" class="text-slate-900"
           placeholder="Enter bank account number" />
@@ -48,7 +55,7 @@
       </mat-form-field>
     </div>
 
-    <div class="flex items-center justify-center flex-col">
+    <div class="flex items-center mt-[30px] flex-col">
       <mat-form-field appearance="outline" class="w-full no-error-spacing compact-input white-theme text-sm">
         <span>Package</span>
         <input matInput class="text-slate-900" disabled placeholder="Enter Package Name" [value]="planName" />
@@ -61,9 +68,16 @@
     </div>
   </div>
   <span class="font-extrabold mt-[20px]">Note: </span>
-  <p class="text-xs">
-    We are currently in the process of developing our payment gateway, which means that your transaction will require
-    manual verification. Rest assured, we will attend to your request promptly and provide you with a response within 24
-    hours. Thank you for your understanding and patience as we work to improve our services.
-  </p>
+  <ol>
+    <li class="text-xs mt-[10px]">
+      We are currently in the process of automated payment verification gateway, which means that your transaction will
+      require
+      manual verification. Rest assured, we will attend to your request promptly and provide you with a response within
+      24
+      hours. Thank you for your understanding and patience as we work to improve our services.
+    </li>
+    <li class="text-xs mt-[10px]">
+      During Manual Varification, you will get withdrawal on your UPI or in Your bank account directly.
+    </li>
+  </ol>
 </div>

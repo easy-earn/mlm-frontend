@@ -4,6 +4,7 @@ import { NoAuthGuard } from '../shared/guards/noAuth.guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { VerifyAccountComponent } from './verify-account/verify-account.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,12 @@ const routes: Routes = [
     canActivate: [NoAuthGuard],
     pathMatch: 'full',
     component: LoginComponent
+  },
+  {
+    path: 'verify-account',
+    canActivate: [NoAuthGuard],
+    pathMatch: 'full',
+    component: VerifyAccountComponent
   },
   {
     path: 'signup',

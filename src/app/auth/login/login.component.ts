@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
   _unsubscribeAll: Subject<any> = new Subject();
   errors: any = {};
+  is_pending_account_verification: boolean = false;
 
   constructor(
     private _authService: AuthService,
@@ -43,7 +44,6 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(form: any) {
-    console.log("login", form);
     const isValid: any = validator(this.form);
     if (isValid) {
       this.loader.open();
@@ -61,6 +61,11 @@ export class LoginComponent implements OnInit {
       }, error => {
         console.log('error', error);
         error?.error?.message && this._snackbarService.showError(error?.error?.message, '', 6);
+        if (error?.error?.error?.is_verified == false) {
+          this.is_pending_account_verification = true;
+        } else {
+          this.is_pending_account_verification = false;
+        }
         this.loader.close();
       });
     } else {

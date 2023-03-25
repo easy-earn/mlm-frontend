@@ -57,7 +57,6 @@ export class MyUsersComponent implements OnInit {
   }
 
   sortData(event: any) {
-    console.log('evnet', event);
     this.isLoading = true;
     this.sortObj.active = event.active;
     this.sortObj.direction = event.direction;

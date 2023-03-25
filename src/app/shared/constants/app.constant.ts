@@ -2,7 +2,8 @@ import { environment } from "src/environments/environment"
 
 export const Constant = {
   appName: "EasyEarn",
-  apiBaseUrl: environment.API_URL
+  apiBaseUrl: environment.API_URL,
+  withdrawLimit: environment.WITHDRAW_LIMIT
 }
 
 

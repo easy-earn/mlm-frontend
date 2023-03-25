@@ -54,17 +54,6 @@
                   <ng-container *ngTemplateOutlet="errorTemplate; context: { key: '/cpassword' }"></ng-container>
                 </div>
                 <div class="form-group">
-                  <label>Pacakge</label>
-                  <mat-form-field appearance="outline" floatLabel="never"
-                    class="w-full border-primary font-global border-1 compact-input no-error-spacing">
-                    <mat-select placeholder="Select Plan" name="package" [(ngModel)]="form.package">
-                      <mat-option *ngFor="let plan of planList" [value]="plan">
-                        {{plan.plan_name}} - ₹{{plan.amount}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="form-group">
                   <label>Referral Code</label>
                   <input type="text" class="form-control" placeholder="Optional" name="ref"
                     [(ngModel)]="form.parent_code">

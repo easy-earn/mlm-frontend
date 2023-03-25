@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "minLength": 3,
+      "errorMessage": {
+        "format": "Invalid email format.",
+        "minLength": "Email is required."
+      }
+    },
+    "otp": {
+      "type": [
+        "string",
+        "number"
+      ],
+      "minLength": 2,
+      "errorMessage": {
+        "minLength": "OTP is required."
+      }
+    }
+  },
+  "required": [
+    "email",
+    "otp"
+  ]
+}

@@ -1,0 +1,59 @@
+<!-- Verify OTP section -->
+<div class="account-section bg_img" data-background="assets/images/bg/bg-5.jpg" id="Verify-OTP">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-5 col-lg-7">
+        <div class="account-card">
+          <div class="account-card__header bg_img overlay--one"
+            [ngStyle]="{'background-image': 'url(./assets/images/bg/login-bg.png)'}">
+            <h2 class="section-title">Welcome to <span class="base--color">{{constant.appName}}</span></h2>
+            <p>we have sent you an OTP (One-Time Password) via email. Please check your email inbox, including the
+              spam folder, to retrieve the OTP.</p>
+          </div>
+          <div class="account-card__body">
+            <h3 class="text-center">Verify an Account</h3>
+            <form class="mt-4" #f="ngForm">
+              <div class="form-group relative">
+                <label>Email Address</label>
+                <input type="email" class="form-control" id="mlm-email" placeholder="Enter email address"
+                  name="mlm-email" [(ngModel)]="form.email" [class.border-red-500]="errors['/email']">
+                <ng-container *ngTemplateOutlet="errorTemplate; context: { key: '/email' }"></ng-container>
+              </div>
+              <div class="form-group relative">
+                <label>One Time Password (OTP)</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter one time password" name="otp"
+                  [(ngModel)]="form.otp" [class.border-red-500]="errors['/otp']">
+                <ng-container *ngTemplateOutlet="errorTemplate; context: { key: '/otp' }"></ng-container>
+              </div>
+              <div class="form-group mb-[35px] relative" id="is_terms_accepted">
+                <div class="flex items-center">
+                  <span class="text-sm cursor-pointer ml-[3px]" *ngIf="sendMailFlag">
+                    Don't get OTP? <a class="text-primary font-bold" (click)="resendOTP()">Resend
+                      OTP</a>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group flex items-center justify-between mt-[35px]">
+                <button mat-flat-button color="primary" class="px-[35px] py-[7px]" *ngIf="!sendMailFlag"
+                  (click)="resendOTP()">Get OTP</button>
+                <button mat-flat-button color="primary" class="px-[35px] py-[7px]" (click)="verifyOTP()"
+                  *ngIf="sendMailFlag">Verify
+                  Account</button>
+                <p class="text-md">Haven't an account? <a [routerLink]="['/auth/login']" class="base--color">Login</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Verify OTP Section End -->
+
+
+<ng-template #errorTemplate let-key="key">
+  <div class="text-red-500 text-[10px] absolute" *ngIf="errors && errors[key]">
+    {{ errors[key] }}
+  </div>
+</ng-template>

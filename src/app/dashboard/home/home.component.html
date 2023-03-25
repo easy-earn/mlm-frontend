@@ -6,18 +6,13 @@
         <mat-card-content class="text-center">
           <h1 class="text-4xl font-bold text-primary" *ngIf="form.balance != null && form.balance != undefined">₹
             {{form.balance}}</h1>
-          <div class="flex items-center mt-5">
-            <mat-select class="w-full p-2 mr-5 border rounded-md bg-white flex h-[40px] no-error-spacing white-select"
-              [(ngModel)]="form.bank_account" placeholder="Select">
-              <input [(ngModel)]="bank_searchQuery" class="p-3 border-b w-full mb-2 sticky text-black top-0 z-50"
-                placeholder="Search...">
-              <mat-option *ngFor="let option of accounts | search:'name,number':bank_searchQuery:'I'" [value]="option">
-                {{ option.name }}
-              </mat-option>
-            </mat-select>
-
-            <button mat-raised-button color="primary" class="text-white flex-shrink-0 " *ngIf="form.balance > 6000"
-              (click)="withdraw()">Withdraw Request</button>
+          <div class="flex items-center justify-center mt-5">
+            <p *ngIf="form.balance < withdrawal_limit" class="text-xs text-center">* withdraw will be enable when you
+              reach at
+              ₹ {{withdrawal_limit}}</p>
+            <button *ngIf="form.balance >= withdrawal_limit" mat-raised-button color="primary"
+              class="w-full text-white flex-shrink-0 " (click)="withdraw()">Withdraw
+              Request</button>
           </div>
         </mat-card-content>
       </mat-card>
@@ -30,11 +25,5 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- <div class="col-span-1">
-      <mat-card>
-        <mat-card-title>Third Card Title</mat-card-title>
-        <mat-card-content>Content goes here</mat-card-content>
-      </mat-card>
-    </div> -->
   </div>
 </div>

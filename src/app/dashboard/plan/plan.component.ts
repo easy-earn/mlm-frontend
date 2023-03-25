@@ -20,7 +20,7 @@ export class PlanComponent implements OnInit {
     plan: null
   }
 
-  is_plan_purchased: boolean = false;
+  user_pro_status: 'NOT_PRO' | 'PENDING' | 'PRO' = 'NOT_PRO';
 
   _unsubscribeAll: Subject<any> = new Subject();
 
@@ -33,16 +33,28 @@ export class PlanComponent implements OnInit {
   ngOnInit(): void {
     if (this._activatedRoute?.snapshot?.data['userResponse']['result']) {
       this.authService.user = this._activatedRoute?.snapshot?.data['userResponse']['result'];
-      this.is_plan_purchased = this.authService?.user.transaction_id && this.authService?.user?.transaction ? true : false;
+      const user = this.authService?.user;
+      if ('payment_verification_pending' in user) {
+        this.user_pro_status = "PENDING";
+      } else {
+        if (user?.transaction && user?.transaction_id) {
+          this.user_pro_status = 'PRO';
+        }
+        else {
+          this.user_pro_status = 'NOT_PRO';
+        }
+      }
     }
-    if (!this.is_plan_purchased) {
+    if (this.user_pro_status == 'NOT_PRO') {
       this.getPlanList();
       const planId = this._activatedRoute.snapshot.queryParamMap.get('planId');
       if (planId) {
         this.purchase(+planId);
       }
+    } else if (this.user_pro_status == 'PENDING') {
+      this.snackbarService.showInfo("Your transaction is in pending verification.", 'X', 3);
     } else {
-      this.snackbarService.showError("You are already purchase your first plan.", 'X', 3);
+      this.snackbarService.showInfo("You are already purchase your first plan.", 'X', 3);
     }
   }
 
@@ -56,7 +68,6 @@ export class PlanComponent implements OnInit {
     this._purchaseService.getPlans().pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       if (response) {
         const { result } = response;
-        console.log('result', result);
         this.plans = result;
       }
       this.loader.close();
@@ -72,7 +83,7 @@ export class PlanComponent implements OnInit {
     const plan = this.plans.find((item: any) => item.plan_id === planId);
     if (plan) {
       this.form.plan = plan;
-      this._dialog.open(PlanPurchaseModalComponent, {
+      const ref = this._dialog.open(PlanPurchaseModalComponent, {
         data: {
           plan: plan
         },
@@ -80,6 +91,13 @@ export class PlanComponent implements OnInit {
         hasBackdrop: true,
         disableClose: false,
         width: '500px'
+      })
+
+      ref.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
+        console.log(response);
+        if (response) {
+          this.user_pro_status = "PENDING";
+        }
       })
     }
   }

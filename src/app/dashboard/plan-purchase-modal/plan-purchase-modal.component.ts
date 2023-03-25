@@ -25,6 +25,7 @@ export class PlanPurchaseModalComponent implements OnInit, OnDestroy {
   form: PurchaseForm = {
     upi: '',
     utr: '',
+    account_holder_name: null,
     bank_account_number: null,
     ifsc_code: null,
     plan_amount: null,
@@ -45,7 +46,6 @@ export class PlanPurchaseModalComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    console.log('planName', this.data);
   }
 
   ngOnDestroy() {
@@ -66,18 +66,16 @@ export class PlanPurchaseModalComponent implements OnInit, OnDestroy {
     return this.data.plan.qr;
   }
 
-  closeDialog() {
-    this.dialogRef.close();
+  closeDialog(response: any) {
+    this.dialogRef.close(response);
   }
 
   purchasePlan() {
     try {
-      console.log('this.form', this.form, typeof this.planAmount, typeof this.data.plan.plan_id);
       this.form.plan_id = this.data.plan.plan_id;
       const input = JSON.parse(JSON.stringify(this.form))
       delete input.plan_amount;
       const isValid: any = validator(input);
-      console.log(isValid, validator.errors);
       if (isValid) {
         // Signup api cal
         this.loader.open();
@@ -86,7 +84,7 @@ export class PlanPurchaseModalComponent implements OnInit, OnDestroy {
 
         this.purchaseService.staticPurchase(body).pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
           if (response) {
-            this.closeDialog();
+            this.closeDialog(response);
           }
           this.loader.close();
         }, error => {
