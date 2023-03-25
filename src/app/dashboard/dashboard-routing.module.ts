@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { MyUsersComponent } from './my-users/my-users.component';
 import { PlanComponent } from './plan/plan.component';
 import { UserDetailResolver } from './plan/plan.resovler';
 import { ProfileComponent } from './profile/profile.component';
-import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
   {
@@ -24,8 +24,8 @@ const routes: Routes = [
         component: ProfileComponent
       },
       {
-        path: "setting",
-        loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule),
+        path: "my-users",
+        component: MyUsersComponent
       },
       {
         path: "plans",

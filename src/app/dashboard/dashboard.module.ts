@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlanComponent } from './plan/plan.component';
 import { PlanPurchaseModalComponent } from './plan-purchase-modal/plan-purchase-modal.component';
+import { MyUsersComponent } from './my-users/my-users.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PlanPurchaseModalComponent } from './plan-purchase-modal/plan-purchase-
     HomeComponent,
     ProfileComponent,
     PlanComponent,
-    PlanPurchaseModalComponent
+    PlanPurchaseModalComponent,
+    MyUsersComponent
   ],
   imports: [
     CommonModule,

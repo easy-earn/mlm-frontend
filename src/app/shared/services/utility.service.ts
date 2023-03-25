@@ -8,4 +8,9 @@ export class UtilityService {
   constructor() { }
 
 
+  getOffset(page: number, size: number) {
+    return size * page;
+  }
+
+
 }

@@ -25,6 +25,8 @@ import { SearchPipe } from './pipes/search.pipe';
 import { PurchaseService } from './services/purchase.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
+import { UserService } from './services/user.service';
+import { MatSortModule } from '@angular/material/sort';
 
 
 const modules = [
@@ -45,6 +47,7 @@ const modules = [
   MatCardModule,
   MatDialogModule,
   MatPaginatorModule,
+  MatSortModule,
   MatTableModule,
   MatProgressSpinnerModule
 ]
@@ -69,6 +72,6 @@ const pipes = [
     ...modules,
     ...pipes
   ],
-  providers: [SnackbarService, UtilityService, FuseMediaWatcherService, PurchaseService, LoaderService]
+  providers: [SnackbarService, UtilityService, FuseMediaWatcherService, PurchaseService, LoaderService, UserService]
 })
 export class SharedModule { }

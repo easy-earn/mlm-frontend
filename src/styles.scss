@@ -191,4 +191,42 @@ $text-slate: rgb(100 116 139 / 1);
   }
 }
 
-.white-input {}
+// Table CSS for All Screen :
+
+.custom-card {
+  height: calc(100vh - 104px);
+}
+
+.table-height {
+  height: calc(100% - 104px);
+}
+
+.table-container {
+  position: relative;
+  max-height: calc(100vh - 225px);
+  width: 100%;
+  overflow: auto;
+}
+
+.mat-table-sticky-border-elem-right {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    left: 0px;
+    top: 0px;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    height: 100%;
+  }
+}
+
+.mat-table-sticky-border-elem-left {
+  border-right: 3px double #e0e0e0;
+}
+
+.table-height {
+  height: calc(100% - 104px);
+}

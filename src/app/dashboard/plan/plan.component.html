@@ -1,7 +1,6 @@
 <div class="lg:p-5 sm:p-3">
   <div class="flex items-center justify-center">
-    <mat-card class="white-card overflow-hidden custom-card text-center p-[20px] flex-shrink-0"
-      *ngIf="!is_plan_purchased">
+    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0" *ngIf="!is_plan_purchased">
       <mat-card-content class="text-center">
         <h1 class="text-4xl font-bold text-primary">
           Welcome to Easy Earn!
@@ -21,8 +20,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="white-card overflow-hidden custom-card text-center p-[20px] flex-shrink-0"
-      *ngIf="is_plan_purchased">
+    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0" *ngIf="is_plan_purchased">
       <mat-card-content class="text-center p-[30px]">
         <p class=" font-semibold text-primary">
           We're writing to confirm that the plan has been successfully purchased.

@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   navLinks: Array<any> = [
     { routerLink: '/dashboard/home', label: 'Home' },
-    { routerLink: '/dashboard/setting', label: 'Settings' },
+    { routerLink: '/dashboard/my-users', label: 'My Users' },
     { routerLink: '/dashboard/plans', label: 'Plans' },
   ]
 
