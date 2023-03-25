@@ -1,1 +1,13 @@
-<p>profile works!</p>
+<div class="lg:p-5 sm:p-3">
+  <div class="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-3">
+    <div class="col-span-1">
+      <mat-card class="white-card  overflow-hidden text-center">
+        <mat-card-title class="text-left">Hello <span *ngIf="user?.name">{{user?.name}}</span><span
+            *ngIf="!user?.name">There,</span></mat-card-title>
+        <mat-card-content class="text-center">
+          <h5 class="text-black mt-[100px] mb-[100px]">Comming Soon...</h5>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

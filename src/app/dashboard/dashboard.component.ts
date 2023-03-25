@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   isScreenSmall: boolean = false;
   _unsubscribeAll: Subject<any> = new Subject();
+  user: any = {};
 
   navLinks: Array<any> = [
     { routerLink: '/dashboard/home', label: 'Home' },
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.user = this.authService.user;
     this._fuseMediaWatcherService.onMediaChange$
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(({ matchingAliases }) => {
