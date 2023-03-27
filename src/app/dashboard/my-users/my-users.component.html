@@ -1,7 +1,18 @@
 <div class="lg:p-5 sm:p-3">
   <mat-card class="white-card px-[0px] pb-0 overflow-hidden custom-card">
     <mat-card-header class="flex items-center justify-between px-[10px] pb-[15px]">
-      <div mat-card-title class="mb-0">Users</div>
+      <div mat-card-title class="mb-0">
+        <div class="flex flex-col">
+          <span class="leading-3 mb-[5px]">Users</span>
+          <div class="flex items-center justify-center">
+            <span class="text-slate-400 text-normal text-sm mr-[10px]">Total User:</span>
+            <span class="text-sm">{{pagination.length}}</span>
+          </div>
+        </div>
+      </div>
+      <div>
+
+      </div>
       <!-- <button mat-raised-button color="primary" class="text-white flex items-center" (click)="openDialog()">
         <mat-icon>add</mat-icon>
         <span>Create Account</span>
