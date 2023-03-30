@@ -1,6 +1,6 @@
 const env = {
-  API_URL: 'http://localhost:3000/api'
-  // API_URL: 'http://easyearn.co.in/api'
+  // API_URL: 'http://localhost:3000/api'
+  API_URL: 'https://backend.easyearn.co.in/api'
 }
 
 
