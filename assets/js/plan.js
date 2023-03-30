@@ -48,7 +48,7 @@ function insertProductPlans(plans) {
     var li3 = $("<li></li>").text("For Lifetime");
     var li4 = $("<li></li>").text("Lifetime Earning");
     var div3 = $("<div></div>").addClass("package-card__range mt-5 base--color").text(`₹ ${plan.amount}`);
-    var a = $("<a></a>").addClass("cmn-btn btn-md mt-4").attr("href", `./app/#/dashboard/plans?planId=${plan.plan_id}`).text("Invest Now");
+    var a = $("<a></a>").addClass("cmn-btn btn-md mt-4").attr("href", `../app/#/dashboard/plans?planId=${plan.plan_id}`).text("Invest Now");
 
     // Append the elements to the DOM
     // li1, li2,
