@@ -38,7 +38,7 @@ function insertProductPlans(plans) {
     var div2 = $("<div></div>").addClass("package-card text-center bg_img")
       // .attr("data-background", "assets/images/bg/bg-4.png");
       .css('background-image', function () {
-        var bg = ('url(assets/images/bg/bg-4.png)');
+        var bg = ('url(../assets/images/bg/bg-4.png)');
         return bg;
       });
     var h4 = $("<h4></h4>").addClass("package-card__title base--color mb-2").text(`${plan.plan_name}`);

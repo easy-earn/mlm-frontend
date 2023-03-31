@@ -9,7 +9,8 @@
           <div class="flex items-center justify-center mt-5">
             <p *ngIf="form.balance < withdrawal_limit" class="text-xs text-center">* withdraw will be enable when you
               reach at
-              ₹ {{withdrawal_limit}}</p>
+              ₹ {{withdrawal_limit}}. Amount will be transfer on every 18th date.</p>
+
             <button *ngIf="form.balance >= withdrawal_limit" mat-raised-button color="primary"
               class="w-full text-white flex-shrink-0 " (click)="withdraw()">Withdraw
               Request</button>
@@ -21,7 +22,10 @@
       <mat-card class="white-card  overflow-hidden  text-center" *ngIf="form.referral_code">
         <mat-card-title>Your Referral Code</mat-card-title>
         <mat-card-content class="text-center">
-          <h1 class="text-4xl font-normal text-primary">{{form?.referral_code}}</h1>
+          <a href="whatsapp://send?text=Hey there! I wanted to share a great way to earn some extra cash - https%3A%2F%2Feasyearn.co.in! It's an easy-to-use platform that lets you earn money by completing simple tasks and referring your friends. Plus, if you use my referral code {{form?.referral_code}}, you'll get a bonus when you sign up! So why not give it a try and start earning today? Let me know if you have any questions!"
+            data-action="share/whatsapp/share">
+            <h1 class="text-4xl font-normal text-primary">{{form?.referral_code}}</h1>
+          </a>
         </mat-card-content>
       </mat-card>
     </div>

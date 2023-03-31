@@ -47,10 +47,6 @@ export class PlanComponent implements OnInit {
     }
     if (this.user_pro_status == 'NOT_PRO') {
       this.getPlanList();
-      const planId = this._activatedRoute.snapshot.queryParamMap.get('planId');
-      if (planId) {
-        this.purchase(+planId);
-      }
     } else if (this.user_pro_status == 'PENDING') {
       this.snackbarService.showInfo("Your transaction is in pending verification.", 'X', 3);
     } else {
@@ -69,13 +65,17 @@ export class PlanComponent implements OnInit {
       if (response) {
         const { result } = response;
         this.plans = result;
+        const planId = this._activatedRoute.snapshot.queryParamMap.get('planId');
+        if (planId) {
+          this.purchase(planId);
+        }
       }
       this.loader.close();
     });
   }
 
 
-  purchase(planId: number) {
+  purchase(planId: any) {
     if (!planId) {
       this.snackbarService.showError("Please select a plan");
       return;

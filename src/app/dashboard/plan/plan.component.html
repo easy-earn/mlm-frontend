@@ -1,6 +1,20 @@
 <div class="lg:p-5 sm:p-3">
   <div class="flex items-center justify-center">
-    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0"
+    <div class="grid gap-3 mt-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1"
+      *ngIf="user_pro_status == 'NOT_PRO'">
+      <div class=" mb-30" *ngFor="let plan of plans">
+        <div class="package-card text-center bg_img" style="background-image: url('assets/images/bg/bg-4.png');">
+          <h4 class="package-card__title base--color mb-2">{{plan.plan_name}}</h4>
+          <ul class="package-card__features mt-4">
+            <li>For Lifetime</li>
+            <li>Lifetime Earning</li>
+          </ul>
+          <div class="package-card__range mt-5 base--color">₹ {{plan.amount}}</div>
+          <a class="cmn-btn btn-md mt-4" (click)="purchase(plan.plan_id)">Invest Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0 max-w-full"
       *ngIf="user_pro_status == 'NOT_PRO'">
       <mat-card-content class="text-center">
         <h1 class="text-4xl font-bold text-primary">
@@ -19,7 +33,7 @@
             (click)="purchase(form.plan.plan_id)">Purchase</button>
         </div>
       </mat-card-content>
-    </mat-card>
+    </mat-card> -->
 
     <mat-card class="white-card max-w-full overflow-hidden text-center p-[20px] flex-shrink-0"
       *ngIf="user_pro_status == 'PENDING'">
@@ -37,7 +51,8 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0" *ngIf="user_pro_status == 'PRO'">
+    <mat-card class="white-card overflow-hidden text-center p-[20px] flex-shrink-0 max-w-full"
+      *ngIf="user_pro_status == 'PRO'">
       <mat-card-content class="text-center p-[30px]">
         <p class=" font-semibold text-primary">
           We're writing to confirm that the plan has been successfully purchased.
