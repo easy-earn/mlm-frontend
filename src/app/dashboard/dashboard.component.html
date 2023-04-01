@@ -1,11 +1,13 @@
 <mat-toolbar color="primary" class="text-white">
-  <button mat-icon-button (click)="drawer.toggle()">
+  <button mat-icon-button *ngIf="isScreenSmall" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <a href="../index.html"><span>EasyEarn</span></a>
+  <a href="../index.html" *ngIf="!isScreenSmall">
+    <img src="assets/images/logo.png" alt="site-logo" class="header-logo">
+  </a>
   <span class="flex-1"></span>
 
-  <button mat-flat-button class="profile-button" [matMenuTriggerFor]="profileMenu">
+  <button mat-flat-button class="profile-button flex items-center" [matMenuTriggerFor]="profileMenu">
     <div class="flex items-center">
       <mat-icon class="profile-icon mr-[10px]">person</mat-icon>
       <span *ngIf="user?.name">{{user.name}}</span>
@@ -22,6 +24,13 @@
 <mat-sidenav-container class="sidebar-container">
   <mat-sidenav #drawer opened mode="side" [mode]="isScreenSmall ? 'over' : 'side'" [opened]="!isScreenSmall">
     <mat-nav-list>
+      <a href="../index.html" *ngIf="isScreenSmall" class="flex items-center mb-[10px]">
+        <img src="assets/images/logo.png" alt="site-logo" class="header-logo ">
+        <div class="flex flex-col mt-[4px]">
+          <p class="text-[20px] font-bold leading-5">EasyEarn</p>
+          <span class="text-[10px]">Invest More, Earn More</span>
+        </div>
+      </a>
       <a mat-list-item *ngFor="let route of navLinks" class="side-nav-link" routerLinkActive="router-link-active"
         [routerLink]="route.routerLink">{{route.label}}</a>
     </mat-nav-list>

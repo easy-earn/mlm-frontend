@@ -4,6 +4,12 @@
   background-color: transparent;
 }
 
+.header-logo {
+  max-height: 50px;
+  height: auto;
+  filter: brightness(5);
+}
+
 mat-sidenav {
   width: 200px;
   background-color: #2b2b2b;
