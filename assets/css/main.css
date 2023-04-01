@@ -2522,12 +2522,14 @@ input[type="email"]:disabled {
 }
 
 .header .site-logo img {
-  width: 175px;
+  width: auto;
+  max-height: 50px;
 }
 
 @media (max-width: 1199px) {
   .header .site-logo img {
-    max-width: 150px;
+    max-width: auto;
+    max-height: 40px;
   }
 }
 
